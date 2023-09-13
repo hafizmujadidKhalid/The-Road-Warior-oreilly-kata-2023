@@ -1,6 +1,9 @@
 ## High Availability
 Ensure the system is accessible at all times with a maximum of 5 minutes per month of unplanned downtime.
 
+## Iterability
+Minimise time to market and enable fast iteration speed for new features.
+
 ## Security
 Protect user data, especially email contents, reservations, and personal information. Implement secure integration with external systems and ensure secure sharing of trip information.
 
