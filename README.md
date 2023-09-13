@@ -12,6 +12,14 @@ The Road Warrior is the next generation online trip management dashboard. It all
 - Business Travelers
 - Frequent Travelers
 
+## Rollout Plan
+As a startup, it is crucial to rollout out the system quickly and iteratively, starting with the most important business bets. It is also important to maximize the value provided to customers without letting costs run loose. 
+
+The following rollout plan is only a starting point that reflects our current understanding and assumbtions. It should - and most defintely will - change as we gain deeper understanding of our customers and their needs.
+### Phase 1: The MVP
+### Phase 2: A solid product
+### Phase 3: Premium Experience
+
 ## Architecture
 ### Key Architectural Characteristics
 | Characteristic     | Definition | Reason |
@@ -22,3 +30,8 @@ The Road Warrior is the next generation online trip management dashboard. It all
 | **Availability**   |Ensure the system is accessible at all times with a maximum of 5 minutes per month of unplanned downtime.         | Explicit business requirement.|
 | **Responsiveness** | The system responds to user interactions almost immediately           | "Magical user experience" is part of our UVP.       |
 
+### Component Diagram
+![Alt text](<diagrams/Component Diagram.png>)
+|Component   | Description   |
+|---|---|
+|   |   |
