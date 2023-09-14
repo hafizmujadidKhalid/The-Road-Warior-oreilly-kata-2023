@@ -7,12 +7,12 @@ deciders: Idealos
 
 ## Context and Problem Statement
 
-PA Data Platform humans should have it easy to create ADRs and should not spend time choosing an ADR format. The goal is to standardize on a suitable template and share it.
+We should have it easy to create ADRs and should not spend time choosing an ADR format. The goal is to standardize on a suitable template and share it.
 
 <!-- This is an optional element. Feel free to remove. -->
 ## Decision Drivers
 
-* Template is short / not to long. The effort for creating an ADR should be less than 5 minutes (?!).
+* Template is short / not too long. The effort for creating an ADR should be less than 5 minutes (?!).
 * The template gives helpful guidance
 * Tooling available
 
