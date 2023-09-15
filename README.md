@@ -151,4 +151,4 @@ For more details on the reasoning behind the decision, please check [ADR001](<AD
 | Reports Generator | Generates business reports.           | Phase 1 |       |
 
 ## Sequence Diagrams
-Please find the sequence diagrams in [this folder](</iagrams/SequenceDiagrams/PNG>).
+Please find the sequence diagrams in [this folder](</diagrams/SequenceDiagrams/PNG>).
