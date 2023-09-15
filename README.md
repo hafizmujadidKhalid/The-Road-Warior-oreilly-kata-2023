@@ -52,7 +52,7 @@ In this phase, we provide magical experience. The system anticipates the user ne
 ### Architectural Style
 The overarching Architectural Style for the system is Microservices whereas Event Driven Architecture [(Event-Carried State Transfer)](https://martinfowler.com/articles/201701-event-driven.html) and CQRS are used when approperiate.
 
-For more details on the reasoning behind the decision, please check [ADR001](<ADRs/ADR001 - Architectural Style.md>)
+For more details on the reasoning behind the decision, please check [ADR001](<ADRs/ADR001 - use Microservice Architecture.md>).
 
 
 ### Component Diagram
@@ -69,14 +69,13 @@ For more details on the reasoning behind the decision, please check [ADR001](<AD
 | Email Poller             | Periodically polls users’ inboxes to check for new emails.                                                                                                                                                                                                       | Phase 2 |        |
 | Email Picker             | Cherry picks travel emails from users’ inboxes.                                                                                                                                                                                                                  | Phase 3 |        |
 | Forwarded Email Receiver | Receives forwarded emails from users who opted to forward their emails to us.                                                                                                                                                                                    | Phase 2 |        |
-| Email Parser             | Parses the picked emails to extract booking references and any IDs needed to retrieve reservation details from agency and GDS APIs. Once a booking reference is extracted, it is published to the new_reservations queue to be processed by Reservations Updater | Phase 2 | ADR003 |
+| Email Parser             | Parses the picked emails to extract booking references and any IDs needed to retrieve reservation details from agency and GDS APIs. Once a booking reference is extracted, it is published to the new_reservations queue to be processed by Reservations Updater | Phase 2 | [ADR003](<ADRs/ADR003 - parse emails for booking reference only.md>) |
 
 **Reservations Service**
 | Component                     | Responsibilities                                                                                                                                                                                                                                                                                        | Phase   | Notes          |
 | :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------ | :------------- |
-| Reservations Update Scheduler | Schedules tasks to check and update upcoming reservations. When a reservation is due for update, this component send an asynchronous message to the Reservations Updater which carrier out the check & update process.                                                                                  | Phase 2 | ADR008         |
-| ADR005                        |                                                                                                                                                                                                                                                                                                         |         |                |
-| Reservations Updater          | Responsible for updating reservations. If the update is triggered from the scheduler, it queries the appropriate agency through Agencies Integration Service then persisting the result if there is an update. If the update is triggered from an event notification, it is persisted without querying. | Phase 1 | ADR004, ADR001 |
+| Reservations Update Scheduler | Schedules tasks to check and update upcoming reservations. When a reservation is due for update, this component send an asynchronous message to the Reservations Updater which carrier out the check & update process.                                                                                  | Phase 2 | [ADR008](<ADRs/ADR008-Reservation Updates Scheduler for Bookings without Event Subscription Support.md>), [ADR005](<ADRs/ADR005-Event Subscription for Reservation Updates.md>)                        |                                                                                                                                                                                                                                                                                                         |         |                |
+| Reservations Updater          | Responsible for updating reservations. If the update is triggered from the scheduler, it queries the appropriate agency through Agencies Integration Service then persisting the result if there is an update. If the update is triggered from an event notification, it is persisted without querying. | Phase 1 | [ADR004](<ADRs/ADR004 - rely only on event subscription to receive booking updates.md>) |
 | Reservations Reader           | Source of truth for reservation data.                                                                                                                                                                                                                                                                   | Phase 1 |                |
 
 **Agencies Integration Service**
@@ -85,14 +84,14 @@ For more details on the reasoning behind the decision, please check [ADR001](<AD
 | Agency API Router     | Routes requests to the appropriate GDS or agency after figuring out which of them can fulfill the request. | Phase 1 |                |
 | GDS Integrator        | Provides standardized access to all GDS’s.                                                                 | Phase 1 |                |
 | Agency Integrator     | Provides standardized access to all agencies.                                                              | Phase 2 |                |
-| GDS Updates Listener  | Listens to event notifications from GDS’s and pushes them through a queue to the Reservations Updater.     | Phase 1 | ADR005, ADR008 |
+| GDS Updates Listener  | Listens to event notifications from GDS’s and pushes them through a queue to the Reservations Updater.     | Phase 1 | [ADR008](<ADRs/ADR008-Reservation Updates Scheduler for Bookings without Event Subscription Support.md>), [ADR005](<ADRs/ADR005-Event Subscription for Reservation Updates.md>) |
 | Agency Support Router | Decides on which URL to redirect the user to for support requests.                                         | Phase 3 |                |	
 
 **Trips Service**
 | Component                    | Responsibilities                               | Phase   | Notes  |
 | :--------------------------- | :--------------------------------------------- | :------ | :----- |
-| Trips Composer               | Composes trips as collections of reservations. | Phase 1 | ADR007 |
-| Trips Reader                 | Source of truth of Trips                       | Phase 1 | ADR007 |
+| Trips Composer               | Composes trips as collections of reservations. | Phase 1 | [ADR007](<ADRs/ADR007-Relying on Trip End Date to Determine Trip State.md>) |
+| Trips Reader                 | Source of truth of Trips                       | Phase 1 | [ADR007](<ADRs/ADR007-Relying on Trip End Date to Determine Trip State.md>) |
 
 **Account Service**
 | Component         | Responsibilities                                               | Phase   | Notes |
@@ -120,7 +119,7 @@ For more details on the reasoning behind the decision, please check [ADR001](<AD
 **Frontend**
 | Component                   | Responsibilities                                                                                                                                                                          | Phase   | Notes  |
 | :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ | :----- |
-| Dashboard Composer          | Provides a single pane of glass view for the user showing all relevant information about their reservations and trips                                                                     | Phase 1 | ADR006 |
+| Dashboard Composer          | Provides a single pane of glass view for the user showing all relevant information about their reservations and trips                                                                     | Phase 1 | [ADR006](<ADRs/ADR006-Elimination of a Backend for Frontend (BE for FE) Architecture.md>) |
 | Metrics Publisher           | Publishes relevant events and metrics to the analytics service (for BE, this is assumed as part of each component’s functionality)                                                        | Phase 1 |        |
 | Offline Cache Manager       | Maintains and updates an offline cache for information that is relevant within the next 7 days                                                                                            | Phase 2 |        |
 | Context-aware Info Provider | Displays information based on current context. For example: GPS location, time of day, etc… May utilize the Offline Cache Manager to make sure the information will be there when needed. | Phase 3 |        |
