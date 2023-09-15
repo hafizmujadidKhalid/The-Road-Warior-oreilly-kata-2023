@@ -1,6 +1,7 @@
 ![Logo](images/logo.png)
 # Road Warior - Oreilly Architectural Kata 2023
 ## Overview
+![Alt text](diagrams/context_diagram.png)
 The Road Warrior is the next generation online trip management dashboard. It allows travelers to see all of their existing reservations organized by trip  online and through their mobile devices.
 
 ## Terminology
