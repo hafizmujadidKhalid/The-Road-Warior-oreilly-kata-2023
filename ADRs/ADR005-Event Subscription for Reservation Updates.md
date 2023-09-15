@@ -27,27 +27,27 @@ hybrid approach for receiving reservation updates:
    reservation updates will be through event subscription. This approach offers
 the following advantages:
 
-* Real-time Updates: Event subscription allows us to receive updates in
-  real-time, ensuring that our system reflects the most current reservation
+    * Real-time Updates: Event subscription allows us to receive updates in
+      real-time, ensuring that our system reflects the most current reservation
 tatus.
-
-* Efficiency: It is a more efficient and responsive way to handle updates
-  compared to polling or periodic checks.
-
-* Scalability: Event-driven architectures can be scaled to accommodate high
-  volumes of updates.
+    
+    * Efficiency: It is a more efficient and responsive way to handle updates
+      compared to polling or periodic checks.
+    
+    * Scalability: Event-driven architectures can be scaled to accommodate high
+      volumes of updates.
 
 1. GDS Subscription (Fallback Method): In cases where reservations are made
    through agencies that do not support event subscription, we will resort to
 using GDS subscriptions to obtain booking updates. This approach is considered
 a fallback method and is justified by the following reasons:
 
-* Agency Limitations: Some travel agencies may not provide event subscription
-  capabilities or may have limitations that prevent real-time updates through
+    * Agency Limitations: Some travel agencies may not provide event subscription
+      capabilities or may have limitations that prevent real-time updates through
 this method.
 
-* Data Integrity: To ensure data integrity and accuracy, it is essential to
-  have a reliable source of reservation updates, even when direct event
+    * Data Integrity: To ensure data integrity and accuracy, it is essential to
+      have a reliable source of reservation updates, even when direct event
 subscription is not available.
 
 ### Consequences
