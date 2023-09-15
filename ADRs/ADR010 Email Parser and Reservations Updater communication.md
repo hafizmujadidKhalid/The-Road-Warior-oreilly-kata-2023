@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 date: 2023-09-15
 deciders: Idealos
 ---
