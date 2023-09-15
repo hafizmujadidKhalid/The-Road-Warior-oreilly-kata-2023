@@ -1,5 +1,23 @@
 ![Logo](images/logo.png)
 # Road Warior - Oreilly Architectural Kata 2023
+
+## Table of Content
+- [Road Warior - Oreilly Architectural Kata 2023](#road-warior---oreilly-architectural-kata-2023)
+	- [Table of Content](#table-of-content)
+	- [Overview](#overview)
+	- [Terminology](#terminology)
+		- [Unique Value Proposition](#unique-value-proposition)
+		- [Target Audience](#target-audience)
+	- [Rollout Plan](#rollout-plan)
+		- [Phase 1: The MVP](#phase-1-the-mvp)
+		- [Phase 2: A solid product](#phase-2-a-solid-product)
+		- [Phase 3: Premium Experience](#phase-3-premium-experience)
+	- [Architecture](#architecture)
+		- [Key Architectural Characteristics](#key-architectural-characteristics)
+		- [Architectural Style](#architectural-style)
+		- [Component Diagram](#component-diagram)
+	- [Sequence Diagrams](#sequence-diagrams)
+
 ## Overview
 ![Alt text](diagrams/context_diagram.png)
 The Road Warrior is the next generation online trip management dashboard. It allows travelers to see all of their existing reservations organized by trip  online and through their mobile devices.
@@ -132,3 +150,5 @@ For more details on the reasoning behind the decision, please check [ADR001](<AD
 | Metrics Collector | Collects and persists analytics data. | Phase 1 |       |
 | Reports Generator | Generates business reports.           | Phase 1 |       |
 
+## Sequence Diagrams
+Please find the sequence diagrams in [this folder](</iagrams/SequenceDiagrams/PNG>).
