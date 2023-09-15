@@ -34,6 +34,12 @@ The following rollout plan is only a starting point that reflects our current un
 | **Availability**   |Ensure the system is accessible at all times with a maximum of 5 minutes per month of unplanned downtime.         | Explicit business requirement.|
 | **Responsiveness** | The system responds to user interactions almost immediately           | "Magical user experience" is part of our UVP.       |
 
+### Architectural Style
+The overarching Architectural Style for the system is Microservices whereas Event Driven Architecture [(Event-Carried State Transfer)](https://martinfowler.com/articles/201701-event-driven.html) and CQRS are used when approperiate.
+
+For more details on the reasoning behind the decision, please check [Title](<ADRs/ADR001 - Architectural Style.md>)
+
+
 ### Component Diagram
 ![Context Diagram](<diagrams/Component Diagram.png>)
 
@@ -45,7 +51,7 @@ Email Receiver Service
 | Component                | Responsibilities                                                                                                                                                                                                                                                 | Phase   | Notes  |
 | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ | :----- |
 | Email Credentials Keeper | Securely saves the email credentials for users who opted to give us access to their inboxes.                                                                                                                                                                     | Phase 3 |        |
-| Email Poller             | Periodically polls users’ inboxes to check for new emails.                                                                                                                                                                                                       | Phase 3 |        |
+| Email Poller             | Periodically polls users’ inboxes to check for new emails.                                                                                                                                                                                                       | Phase 2 |        |
 | Email Picker             | Cherry picks travel emails from users’ inboxes.                                                                                                                                                                                                                  | Phase 3 |        |
 | Forwarded Email Receiver | Receives forwarded emails from users who opted to forward their emails to us.                                                                                                                                                                                    | Phase 2 |        |
 | Email Parser             | Parses the picked emails to extract booking references and any IDs needed to retrieve reservation details from agency and GDS APIs. Once a booking reference is extracted, it is published to the new_reservations queue to be processed by Reservations Updater | Phase 2 | ADR003 |
@@ -72,7 +78,6 @@ Trips Service
 | :--------------------------- | :--------------------------------------------- | :------ | :----- |
 | Trips Composer               | Composes trips as collections of reservations. | Phase 1 | ADR007 |
 | Trips Reader                 | Source of truth of Trips                       | Phase 1 | ADR007 |
-| Trips Social Media Publisher | Publishes trip details to Social Media         | Phase 3 |        |
 
 Account Service
 | Component         | Responsibilities                                               | Phase   | Notes |
@@ -104,6 +109,7 @@ Frontend
 | Metrics Publisher           | Publishes relevant events and metrics to the analytics service (for BE, this is assumed as part of each component’s functionality)                                                        | Phase 1 |        |
 | Offline Cache Manager       | Maintains and updates an offline cache for information that is relevant within the next 7 days                                                                                            | Phase 2 |        |
 | Context-aware Info Provider | Displays information based on current context. For example: GPS location, time of day, etc… May utilize the Offline Cache Manager to make sure the information will be there when needed. | Phase 3 |        |
+| Trips Social Media Publisher | Publishes trip details to Social Media         | Phase 3 |        |
 
 Analytics Service
 | Component         | Responsibilities                      | Phase   | Notes |
