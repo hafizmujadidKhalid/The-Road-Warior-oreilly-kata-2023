@@ -84,7 +84,7 @@ For more details on the reasoning behind the decision, please check [ADR001](<AD
 | :-------------------- | :--------------------------------------------------------------------------------------------------------- | :------ | :------------- |
 | Agency API Router     | Routes requests to the appropriate GDS or agency after figuring out which of them can fulfill the request. | Phase 1 |                |
 | GDS Integrator        | Provides standardized access to all GDS’s.                                                                 | Phase 1 |                |
-| Agency Integrator     | Provides standardized access to all agencies.                                                              | Phase 3 |                |
+| Agency Integrator     | Provides standardized access to all agencies.                                                              | Phase 2 |                |
 | GDS Updates Listener  | Listens to event notifications from GDS’s and pushes them through a queue to the Reservations Updater.     | Phase 1 | ADR005, ADR008 |
 | Agency Support Router | Decides on which URL to redirect the user to for support requests.                                         | Phase 3 |                |	
 
