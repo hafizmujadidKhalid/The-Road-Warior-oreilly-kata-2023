@@ -1,0 +1,18 @@
+title User creates trip
+
+User->Frontend: Create trip with reservation id
+Frontend->Reservations Updater: Get trip information for id
+Reservations Updater->Agency API Router: Send request for reservation through preferred integration
+note right of Agency API Router: Wait for synchronous confirmation
+Agency API Router->Reservations Updater: Send travel data
+note right of Reservations Updater: Update reservations
+Reservations Updater->Frontend: Reservation updated
+Frontend->Trips Composer: Create trip
+Trips composer->Frontend: Trip created
+Frontend->Dashboard composer: Fetch trips
+Dashboard composer->Reservations reader: Fetch reservations
+Reservations reader->Dashboard composer: Send reservations
+Dashboard composer->Trips Reader: Fetch trips
+Trips Reader->Dashboard composer: Send trips data
+Dashboard composer->Frontend: Send dashboard
+Frontend->User: Display dashboard with new trip

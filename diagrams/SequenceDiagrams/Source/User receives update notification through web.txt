@@ -1,0 +1,12 @@
+title User receives update notification through web
+
+note right of GDS Updates Listener: Listen to update events
+note right of GDS Updates Listener: Put reservation update in message queue
+note right of Reservations Updater: Fetch message from queue and update reservation
+note right of Reservations Updater: Put notification in message queue
+note right of Notifications Broker: Fetch notification from queue
+Notifications Broker->Preferences Reader: Fetch preferred notification channel(s)
+Preferences Reader->Notifications Broker: Send web channel
+Notifications Broker->Web Notifier: Send web notification about update
+Web Notifier->Frontend: Send web notification about update
+Frontend->User: Display update notification

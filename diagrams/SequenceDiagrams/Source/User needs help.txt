@@ -1,0 +1,9 @@
+title User needs help
+
+User->Frontend: Click on help button on trip
+Frontend->Agency Support Router: Send help request to preferred agency
+Agency Support Router->Preferences Reader: Fetch preferred agency
+Preferences Reader->Agency Support Router: Send preferred agency
+note right of Agency Support Router: Help request to agency sent, waited for synchronous confirmation
+Agency Support Router->Frontend: Confirm help request sent
+Frontend->User: Confirm help request sent

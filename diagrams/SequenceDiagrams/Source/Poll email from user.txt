@@ -1,0 +1,13 @@
+title Poll email from user
+
+Email Poller->Email Credentials Keeper: Fetch credentials
+Email Credentials Keeper->Email Poller: Send credentials
+Email Poller->User Email service provider: Authenticate, poll emails
+note right of Email Poller: Receive emails
+Email Poller->Email Picker: Filter for relevant emails
+Email Picker->Email Parser: Forward relevant emails
+note right of Email Parser: Put update in message queue
+note right of Reservations Updater: Fetch message from queue
+Reservations Updater->Agency API Router: Fetch update with id
+Agency API Router->Reservations Updater: Return update
+note right of Reservations Updater: Update reservations

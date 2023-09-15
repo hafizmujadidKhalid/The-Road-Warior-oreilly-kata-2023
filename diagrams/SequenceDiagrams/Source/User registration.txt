@@ -1,0 +1,8 @@
+title User registration
+
+User->Frontend: Create account
+Frontend->Account Updater: Create account
+note right of Account Updater: Account stored
+Account Updater->Frontend: Account confirmed
+Frontend->User: Success message, Basic profile exists
+

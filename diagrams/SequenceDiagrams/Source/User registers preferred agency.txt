@@ -1,0 +1,14 @@
+title User registers preferred agency
+
+User->Frontend: View Profile
+Frontend->Profile Reader: Fetch profile data
+Profile Reader->Frontend: Send profile information
+Frontend->User: Display profile
+User->Frontend: Update profile with preferred agency
+Frontend->Preferences Updater:Store preference
+note right of Preferences Updater: Preference stored
+Preferences Updater->Frontend: Confirm preference stored
+Frontend->User: Display success
+Frontend->Profile Reader: Fetch profile
+Profile Reader->Frontend:Send profile data
+Frontend->User: Display profile

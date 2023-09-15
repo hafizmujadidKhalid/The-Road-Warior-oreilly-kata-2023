@@ -1,0 +1,10 @@
+title User watches dashboard
+
+User->Frontend: Watch dashboard
+Frontend->Dashboard composer: Fetch trips
+Dashboard composer->Reservations reader: Fetch reservations
+Reservations reader->Dashboard composer: Send reservations
+Dashboard composer->Trips Reader: Fetch trips
+Trips Reader->Dashboard composer: Send trips data
+Dashboard composer->Frontend: Send dashboard
+Frontend->User: Display dashboard with trips

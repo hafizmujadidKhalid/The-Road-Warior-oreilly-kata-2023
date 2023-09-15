@@ -1,0 +1,10 @@
+title User forwards email
+
+User Email service provider->Forwarded Email Receiver: Forward Email
+Forwarded Email Receiver->Email Picker: Filter email
+Email Picker->Email Parser: Parse email
+note right of Email Parser: Put update in message queue
+note right of Reservations Updater: Fetch message from queue
+Reservations Updater->Agency API Router: Fetch update with id
+Agency API Router->Reservations Updater: Send reservation data
+note right of Reservations Updater: Update reservations

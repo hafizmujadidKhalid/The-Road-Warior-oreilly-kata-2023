@@ -1,0 +1,7 @@
+title User shares trip through social media
+
+User->Frontend: Click on share trip button
+Frontend->Trips Social Media Publisher: Publish trip on preferred social media
+Trips Social Media Publisher->Frontend: Return share url 
+Frontend->User: Display share url for chosen social medium
+

@@ -1,0 +1,11 @@
+title User cancels trip
+
+User->Frontend: Cancel trip
+Frontend->Reservations Updater: Update trip as cancelled
+Reservations Updater->Agency API Router: Send cancel update through preferred integration
+note right of Agency API Router: Wait for synchronous confirmation
+Agency API Router->Reservations Updater: Report successful cancellation
+Reservations Updater->Frontend: Report successful cancellation
+Frontend->Trip Composer: Delete trip
+note right of Trip Composer: Delete trip
+note right of User: Updated dashboard is displayed
